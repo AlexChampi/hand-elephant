@@ -33,7 +33,7 @@ export default {
     },
     beforeMount() {
         this.emitter.emit('clearActive');
-        let resuset = 'http://localhost:8080/api/v1/post/' + this.$route.params.id;
+        let resuset = 'http://5.23.49.8:8080/api/v1/post/' + this.$route.params.id;
         axios.get(resuset)
             .then(response => {
                 if (response.status === 200) {
@@ -138,7 +138,7 @@ export default {
                             if (res.status !== 200) {
                                 this.fileError = "Не удалось загрузить картину";
                             } else {
-                                fetch("http://localhost:8080/api/v1/post/update", {
+                                fetch("http://5.23.49.8:8080/api/v1/post/update", {
                                     method: 'PATCH',
                                     headers: {
                                         'Content-Type': 'application/json'
@@ -167,7 +167,7 @@ export default {
                             }
                         });
                 } else {
-                    fetch("http://localhost:8080/api/v1/post/update", {
+                    fetch("http://5.23.49.8:8080/api/v1/post/update", {
                         method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json'
@@ -202,7 +202,7 @@ export default {
 
         },
         del() {
-            fetch("http://localhost:8080/api/v1/post/delete/" + this.post.id, {
+            fetch("http://5.23.49.8:8080/api/v1/post/delete/" + this.post.id, {
                 method: 'DELETE',
             }).then(response => response.json())
                 .then(data => {
@@ -260,7 +260,7 @@ export default {
             <div v-if="post.id" :class="{ 'flipped': isFlipped }" class="post">
                 <div class="card front">
                     <div class="post-img">
-                        <img :style="cssVars">
+                        <img :style="cssVars" alt="товар">
 
                         <div :class="display" @click.prevent="edit" class="post-editor">
                             <svg fill="#000000" width="25px" height="25px" viewBox="0 0 32 32" version="1.1"
@@ -340,7 +340,7 @@ export default {
                 </div>
                 <div class="card back">
                     <div class="post-img">
-                        <img :style="cssVars"/>
+                        <img :style="cssVars" alt="товар"/>
 
                         <div :class="display" @click.prevent="edit" class="post-editor">
                             <svg fill="#000000" width="25px" height="25px" viewBox="0 0 32 32" version="1.1"

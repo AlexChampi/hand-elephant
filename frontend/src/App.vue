@@ -37,7 +37,7 @@ export default {
     beforeCreate() {
         this.emitter.on('onShowUser', (id) => {
             this.clicked = "";
-            let resuset = 'http://localhost:8080/api/v1/user/' + id;
+            let resuset = 'http://5.23.49.8:8080/api/v1/user/' + id;
             axios.get(resuset)
                 .then(response => {
                     this.currentUser = response.data;
@@ -51,7 +51,7 @@ export default {
                 });
         });
         this.emitter.on('onShowPost', (id) => {
-            let resuset = 'http://localhost:8080/api/v1/post/' + id;
+            let resuset = 'http://5.23.49.8:8080/api/v1/post/' + id;
             this.clicked = "";
             alert(resuset)
             axios.get(resuset)
@@ -75,7 +75,7 @@ export default {
         })
         this.emitter.on('onAddPost', () => {
             this.clicked = "";
-            axios.get("http://localhost:8080/api/v1/post").then(response => {
+            axios.get("http://5.23.49.8:8080/api/v1/post").then(response => {
                 console.log("REPOSTNE" + JSON.stringify(response.data.posts));
                 this.posts = response.data.posts;
             });
@@ -86,7 +86,7 @@ export default {
             } else {
                 this.clicked = name;
             }
-            axios.get("http://localhost:8080/api/v1/post?category=" + this.clicked).then(response => {
+            axios.get("http://5.23.49.8:8080/api/v1/post?category=" + this.clicked).then(response => {
                 console.log("REPOSTNE" + JSON.stringify(response.data.posts));
                 this.posts = response.data.posts;
                 this.$router.push('/index')
@@ -103,7 +103,7 @@ export default {
             this.$router.push('/index');
         });
         this.emitter.on('onSearch', (search) => {
-            axios.get("http://localhost:8080/api/v1/post/contains?value=" + search).then(response => {
+            axios.get("http://5.23.49.8:8080/api/v1/post/contains?value=" + search).then(response => {
                 this.posts = response.data.posts;
                 this.$router.push('/index')
             });
@@ -113,11 +113,11 @@ export default {
         if (localStorage.getItem('user')) {
             this.user = JSON.parse(localStorage.user);
         }
-        axios.get("http://localhost:8080/api/v1/post/categories").then(response => {
+        axios.get("http://5.23.49.8:8080/api/v1/post/categories").then(response => {
             console.log("REPOSTNE" + response);
             this.categories = response.data.categories;
         });
-        axios.get("http://localhost:8080/api/v1/post").then(response => {
+        axios.get("http://5.23.49.8:8080/api/v1/post").then(response => {
             console.log("REPOSTNE" + JSON.stringify(response.data.posts));
             this.posts = response.data.posts;
         });

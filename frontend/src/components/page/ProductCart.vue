@@ -14,7 +14,7 @@ export default {
             <span class="price">Цена: {{item.price}}</span>
         </div>
         <div class="product-cart-photo">
-            <img src="../../../public/slon.jpg"/>
+            <img src="../../../public/slon.jpg" alt="товар"/>
         </div>
         <div class="cart-text product-cart-info">
             <div class="title">

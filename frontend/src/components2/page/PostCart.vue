@@ -47,7 +47,7 @@ export default {
                     <button>x</button>
                 </div>
             </template>
-            <img :style="cssVars"/>
+            <img :style="cssVars" alt="товар"/>
         </div>
 
         <!--        <div :class="display">-->

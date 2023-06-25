@@ -17,7 +17,7 @@ export default {
                 this.error = ""
             }
             if (this.error === "") {
-                fetch("http://localhost:8080/api/v1/user/enter", {
+                fetch("http://5.23.49.8:8080/api/v1/user/enter", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

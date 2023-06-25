@@ -37,7 +37,7 @@ export default {
     //     }
     // },
     beforeMount() {
-        let resuset = 'http://localhost:8080/api/v1/user/' + this.$route.params.id;
+        let resuset = 'http://5.23.49.8:8080/api/v1/user/' + this.$route.params.id;
         axios.get(resuset)
             .then(response => {
                 if (response.status === 200) {
@@ -73,7 +73,7 @@ export default {
                 this.errorName = "";
             }
             if (this.errorName === "") {
-                fetch("http://localhost:8080/api/v1/user/edit/name", {
+                fetch("http://5.23.49.8:8080/api/v1/user/edit/name", {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
@@ -110,7 +110,7 @@ export default {
                 this.errorSurname = "";
             }
             if (this.errorSurname === "") {
-                fetch("http://localhost:8080/api/v1/user/edit/surname", {
+                fetch("http://5.23.49.8:8080/api/v1/user/edit/surname", {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
@@ -142,7 +142,7 @@ export default {
             }
 
             if (this.errorPhone === "") {
-                fetch("http://localhost:8080/api/v1/user/edit/phone", {
+                fetch("http://5.23.49.8:8080/api/v1/user/edit/phone", {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
@@ -175,7 +175,7 @@ export default {
             }
 
             if (this.errorEmail === "") {
-                fetch("http://localhost:8080/api/v1/user/edit/email", {
+                fetch("http://5.23.49.8:8080/api/v1/user/edit/email", {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'

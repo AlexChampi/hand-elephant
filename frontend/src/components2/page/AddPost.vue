@@ -59,7 +59,7 @@ export default {
                         if (res.status !== 200) {
                             this.fileError = "Не удалось загрузить картину";
                         } else {
-                            fetch("http://localhost:8080/api/v1/post", {
+                            fetch("http://5.23.49.8:8080/api/v1/post", {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json'
@@ -211,7 +211,7 @@ export default {
                             <div class="name">
                                 Загрузить фото
                             </div>
-                            <img id="uploaded-photo">
+                            <img id="uploaded-photo" alt="ваше фото">
                             <div class="place-holder">
                                 <label for="product-photo" class="b-btn dropzone" @dragover="dragover"
                                        @dragleave="dragleave"

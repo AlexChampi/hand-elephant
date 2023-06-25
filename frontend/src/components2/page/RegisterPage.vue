@@ -104,7 +104,7 @@ export default {
 
         },
         postRegister() {
-            fetch("http://localhost:8080/api/v1/user/register", {
+            fetch("http://5.23.49.8:8080/api/v1/user/register", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
