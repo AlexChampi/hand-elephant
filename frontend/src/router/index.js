@@ -6,6 +6,7 @@ import AddPost from "@/components2/page/AddPost.vue";
 import Posts from "@/components2/page/Posts.vue";
 import PostPage from "@/components2/page/PostPage.vue";
 import PageNotFound from "@/components2/page/PageNotFound.vue";
+import LegalRules from "@/components2/page/LegalRules.vue";
 
 const routes = [
     {
@@ -51,6 +52,11 @@ const routes = [
         component: PostPage
     },
     {
+        path: '/legal-rules',
+        name: 'legal-rules',
+        component: LegalRules
+    },
+    {
         path: "/:pathMatch(.*)*",
         component: PageNotFound
     }
@@ -59,5 +65,10 @@ const router = createRouter({
     history: createWebHistory(),
     routes,
 });
+
+router.beforeEach((to, from, next) => {
+    if ((to.name === 'add-post' || to.name === '/add-post') && !localStorage.user) next({ name: 'enter' })
+    else next()
+})
 
 export default router;

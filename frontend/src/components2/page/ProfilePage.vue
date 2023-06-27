@@ -1,7 +1,6 @@
 <script>
 import {defineComponent} from 'vue'
 import {vMaska} from "maska";
-import data from "@/data";
 import axios from "axios";
 import PostCart from "@/components2/page/PostCart.vue";
 
@@ -84,9 +83,7 @@ export default {
                     })
                 }).then(response => response.json())
                     .then(data => {
-                        alert(JSON.stringify(data))
                         if (data) {
-                            alert(data.name)
                             this.user.name = data.name;
                             this.currentUser.name = data.name;
                             localStorage.user = JSON.stringify(this.user);

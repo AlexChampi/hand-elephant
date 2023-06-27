@@ -20,7 +20,6 @@ export default defineComponent({
     },
     methods: {
         showCategory(name) {
-
             this.emitter.emit('onShowCat', name)
         }
     }

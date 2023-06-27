@@ -17,8 +17,10 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/v1/user")
 public class UserController {
     private final UserService userService;
-private final PostService postService;
-    public UserController(UserService userService, PostService postService) {this.userService = userService;
+    private final PostService postService;
+
+    public UserController(UserService userService, PostService postService) {
+        this.userService = userService;
         this.postService = postService;
     }
 

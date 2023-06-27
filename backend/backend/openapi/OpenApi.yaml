@@ -1,0 +1,316 @@
+openapi: 3.0.3
+info:
+  title: Hand Elephant
+  description: Specification for hand elephant
+  version: 1.0.0
+servers:
+  - url: 'http://5.23.49.8'
+paths:
+  /api/v1/post:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePostRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostDto'
+  /api/v1/post/update:
+    patch:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePostRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostDto'
+  /api/v1/post/delete/{id}:
+    delete:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /api/v1/post/contains:
+    get:
+      parameters:
+        - name: value
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+  /api/v1/post/categories:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoriesResponse'
+  /api/v1/post/{id}:
+    get:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostDto'
+  /api/v1/user/register:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterUserRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisterUserResponse'
+  /api/v1/user/enter:
+    post:
+      summary: Log in a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnterUserRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnterUserResponse'
+  /api/v1/user/{id}:
+    get:
+      summary: Get user by ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserWithPosts'
+  /api/v1/user/edit/name:
+    put:
+      summary: Change user's name
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditNameRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+  /api/v1/user/edit/surname:
+    put:
+      summary: Change user's surname
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditSurnameRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+  /api/v1/user/edit/phone:
+    put:
+      summary: Change user's phone
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditPhoneRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+  /api/v1/user/edit/email:
+    put:
+      summary: Change user's email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditEmailRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+components:
+  schemas:
+    CategoriesResponse:
+      type: object
+      properties:
+        categories:
+          type: array
+          items:
+            type: string
+    CreatePostRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          minLength: 1
+        category:
+          type: string
+        address:
+          type: string
+          minLength: 1
+        description:
+          type: string
+          minLength: 1
+        price:
+          type: string
+        photoUrl:
+          type: string
+        authorId:
+          type: integer
+    UpdatePostRequest:
+      type: object
+      properties:
+        postId:
+          type: integer
+        title:
+          type: string
+          minLength: 1
+        category:
+          type: string
+        address:
+          type: string
+          minLength: 1
+        description:
+          type: string
+          minLength: 1
+        price:
+          type: string
+        photoUrl:
+          type: string
+        authorId:
+          type: integer
+    PostDto:
+      type: object
+      properties:
+        id:
+          type: integer
+
+    PostResponse:
+      type: object
+      properties:
+        posts:
+          type: array
+
+    RegisterUserRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+    RegisterUserResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+    EnterUserRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+    EnterUserResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+    UserWithPosts:
+      type: object
+      properties:
+        id:
+          type: integer
+    EditEmailRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+    EditPhoneRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+    UserDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        surname:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        createdTime:
+          type: string
+          format: date-time

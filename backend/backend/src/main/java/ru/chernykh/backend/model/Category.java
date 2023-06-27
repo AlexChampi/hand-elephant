@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 public enum Category {
     BEADS("БИСЕР"),
     CLAY("ГЛИНА"),
-    EMBROIDERY("ВЫШИКВКА"),
+    EMBROIDERY("ВЫШИВКА"),
     IRON("ЖЕЛЕЗО"),
     KNITTING("ВЯЗАНИЕ"),
     MODELING("ЛЕПКА"),

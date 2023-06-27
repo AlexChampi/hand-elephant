@@ -3,6 +3,18 @@ plugins {
     id 'org.springframework.boot' version '3.0.6'
     id 'io.spring.dependency-management' version '1.1.0'
     id 'io.freefair.lombok' version '8.0.1'
+    id "org.openapi.generator" version "6.6.0"
+}
+
+task generateOpenApiSpec(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'org.openapitools.codegen.OpenAPIGenerator'
+    args = [
+            'generate',
+            '-g', 'openapi',
+            '-i', 'src/main/java/',
+            '-o', 'openapi/spec'
+    ]
 }
 
 group = 'ru.chernykh'
@@ -20,6 +32,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.openapitools:openapi-generator-cli:6.6.0'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'

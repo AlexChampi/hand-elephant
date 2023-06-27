@@ -8,7 +8,6 @@
 <script>
 import ProductCart from "@/components/page/ProductCart.vue";
 import IndexProductCart from "@/components/page/IndexProductCart.vue";
-import data from "@/data";
 
 export default {
     components: {IndexProductCart, ProductCart},

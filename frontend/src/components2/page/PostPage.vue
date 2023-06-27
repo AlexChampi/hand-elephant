@@ -138,7 +138,7 @@ export default {
                             if (res.status !== 200) {
                                 this.fileError = "Не удалось загрузить картину";
                             } else {
-                                fetch("http://5.23.49.8:8080/api/v1/post/update", {
+                                fetch( "http://5.23.49.8:8080/api/v1/post/update", {
                                     method: 'PATCH',
                                     headers: {
                                         'Content-Type': 'application/json'
@@ -163,7 +163,7 @@ export default {
                                             this.$router.push({name: "index"})
                                         }
                                     })
-                                    .catch(error => {alert("ERRR"); this.error = error});
+                                    .catch(error => {this.error = error});
                             }
                         });
                 } else {
@@ -192,7 +192,7 @@ export default {
                                 this.$router.push({name: "index"})
                             }
                         })
-                        .catch(error => {alert("ERRR"); this.error = error});
+                        .catch(error => {this.error = error});
                 }
 
             }
@@ -201,22 +201,22 @@ export default {
         hide() {
 
         },
-        del() {
+        del: function () {
             fetch("http://5.23.49.8:8080/api/v1/post/delete/" + this.post.id, {
                 method: 'DELETE',
             }).then(response => response.json())
                 .then(data => {
-                    alert(data)
                     if (data["message"]) {
-                        alert("MASD");
                         this.error = data["message"];
                     } else {
-                        alert(this.post.id);
-                        // this.$router.push({name: "post-page", params: {id: this.post.id-1}})
+                        this.emitter.emit("onAddPost")
                         this.$router.push({name: "index"})
                     }
                 })
-                .catch(error => {alert("ERRR"); this.error = error});
+                .catch(error => {
+                    this.emitter.emit("onAddPost")
+                    this.$router.push({name: "index"})
+                });
         }
     },
     computed: {

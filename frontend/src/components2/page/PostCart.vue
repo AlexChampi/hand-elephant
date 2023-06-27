@@ -21,10 +21,8 @@ export default {
                 });
         },
         hidde() {
-            alert("hidde");
         },
         remove() {
-            alert("remove");
         }
     },
     computed: {

@@ -1,7 +1,6 @@
 <script>
 import {computed, defineComponent} from 'vue'
 import {vMaska} from "maska"
-import data from "@/data";
 import {useStore} from "vuex";
 import {store} from "core-js/internals/reflect-metadata";
 
@@ -42,7 +41,6 @@ export default {
         onRegister: function () {
             let validName = this.name.trim();
             let validSurname = this.surname.trim();
-            alert(validName);
             if (!validName) {
                 this.nameError = "Поле должно быть заполнено";
             } else if (!/^[а-яА-Я][а-я]+$/.test(this.name)) {
@@ -113,7 +111,7 @@ export default {
 
         },
         postRegister() {
-            fetch("http://localhost:8080/api/v1/user/register", {
+            fetch("http://5.23.49.8:8080/api/v1/user/register", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -130,7 +128,6 @@ export default {
             }).then(response => response.json())
                 .then(data => {
                     if (data["user"]) {
-                        alert(data["user"])
                         this.emitter.emit('onLogin', data.user)
                         this.$router.push('index');
                     } else if (data["message"]) {

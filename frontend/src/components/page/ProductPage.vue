@@ -1,7 +1,7 @@
 <script>
 import ProductCart from "@/components/page/ProductCart.vue";
 import SideBar from "@/components/page/SideBar.vue";
-import data from "@/data";
+
 
 export default {
     components: {SideBar, ProductCart},

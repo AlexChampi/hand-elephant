@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 public class BackendExceptionHandler {
     @ExceptionHandler({
             AuthenticationException.class, UserCollisionException.class, AuthorizationException.class})
-    public ResponseEntity<UserCollisionException> handelUserCollisionException(UserCollisionException e) {
+    public ResponseEntity<Exception> handelUserCollisionException(Exception e) {
         return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
     }
 
